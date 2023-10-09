@@ -21,8 +21,8 @@ public class Main {
      * Displays the restaurant menu
      */
     public static void displayMenu() {
-        System.out.println("Welcome to Our Restaurant");
-        System.out.println("Restaurant Menu");
+        System.out.println("\t\tWelcome to Our Restaurant");
+        System.out.println("\n\tRestaurant Menu");
         System.out.println("1. Burger - $100");
         System.out.println("2. Smokies - $200");
         System.out.println("3. Chips Plain - $250");
@@ -34,8 +34,19 @@ public class Main {
      * Returns user input as an integer
      */
     public static int getUserChoice() {
-        System.out.println("Place your order (Enter the item number):");
-        return scanner.nextInt();
+        int choice;
+        while (true){
+
+            try {
+                System.out.println("Place your order (Enter the item number):");
+                choice =  scanner.nextInt();
+                break;
+            }catch (InputMismatchException e){
+                System.out.println("Invalid choice try again");
+                scanner.nextLine();
+            }
+        }
+        return choice;
     }
 
     /**
@@ -103,7 +114,7 @@ public class Main {
         System.out.println("You have selected Chips");
         while (true) {
             try {
-                System.out.println("How many chips do you want?");
+                System.out.println("How many packets of chips do you want?");
                 int quantity = scanner.nextInt();
                 totalCost = quantity * price;
                 System.out.println("Total price is: $" + totalCost);
@@ -132,5 +143,9 @@ public class Main {
             System.out.println("Invalid choice. Please enter 'Y' or 'N'.");
             continueShopping();
         }
+    }
+
+    public static void getTotal(){
+
     }
 }
